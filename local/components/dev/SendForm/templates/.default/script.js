@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded',function ()
         if (e.target.classList.contains('add')){
             let div = document.createElement('div');
             div.innerHTML = clone
-            div.style.display = 'flex'
             div.className = 'multiple-field'
             parent.append(div)
             countField++
@@ -125,7 +124,7 @@ document.addEventListener('DOMContentLoaded',function ()
 
             }
         } else {
-            alert('Вы не заполнили обязательные поля (Заголовок заявки,категория,вид заявки)')
+            alert('Вы не заполнили поле "Заголовок"')
         }
 
     })

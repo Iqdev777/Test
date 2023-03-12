@@ -22,7 +22,7 @@ class DevSendForm extends \CBitrixComponent implements Controllerable
     {
         if (isset($arFiles)) {
             foreach ($arFiles as $file) {
-                $fileIds[] =  \CFile::SaveFile($file,"mailform");
+                $fileIds[] = \CFile::SaveFile($file,"mailform");
             }
         }
         return $fileIds;
@@ -31,6 +31,8 @@ class DevSendForm extends \CBitrixComponent implements Controllerable
     private function sendMail($fileIds)
     {
         $email = COption::GetOptionString("main", "email_from");
+
+        $this->request->set('request', json_decode($this->request->toArray()['request']));
 
         \Bitrix\Main\Mail\Event::sendImmediate(array( // or send
             "EVENT_NAME" => "FORM_NEW",

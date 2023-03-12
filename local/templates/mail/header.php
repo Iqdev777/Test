@@ -1,9 +1,9 @@
 <?php if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 $request = \Bitrix\Main\Context::getCurrent()->getRequest();
 
-$arData = $request->getPostList()->toArray();
-$arRequest = json_decode($arData['request']);
+$arData = $request->toArray();
 ?>
+
 <body>
 <h1>Заголовок заявки - <?=$arData['titleRequest']?></h1>
 <hr>
@@ -30,7 +30,7 @@ $arRequest = json_decode($arData['request']);
     <tbody>
 
 
-        <?foreach ($arRequest as $value) {?>
+        <?foreach ($arData['request'] as $value) {?>
             <tr>
                 <td><?=$value->brand?></td>
                 <td><?=$value->title?></td>

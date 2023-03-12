@@ -9,6 +9,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die(); ?>
     $CMain = new CMain();
     $CMain->SetTitle('Отправка формы');
     Asset::getInstance()->addCss(SITE_TEMPLATE_PATH .'/css/bootstrap.min.css');
+    Asset::getInstance()->addCss(SITE_TEMPLATE_PATH .'/css/style.css');
     Asset::getInstance()->addJs( SITE_TEMPLATE_PATH .'/js/bootstrap.min.js');
     ?>
     <meta name="viewport"

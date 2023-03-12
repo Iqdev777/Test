@@ -1,0 +1,24 @@
+.multiple-field{
+    display: flex;
+}
+
+.comment {
+    display: flex;
+}
+@media (min-width: 600px) and (max-width: 700px) {
+    .multiple-field{
+        display: inline;
+    }
+}
+
+@media (min-width: 400px) and (max-width: 599.99px) {
+    .multiple-field{
+        display: inline;
+    }
+}
+
+@media (max-width: 399.99px) {
+    .multiple-field{
+        display: inline;
+    }
+}
