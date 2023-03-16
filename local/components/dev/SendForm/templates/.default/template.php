@@ -1,9 +1,9 @@
 <?php if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 CJSCore::Init(array("fx"));
 use  \Bitrix\Main\Page\Asset;
-Asset::getInstance()->addCss(SITE_TEMPLATE_PATH .'/css/bootstrap.min.css');
-Asset::getInstance()->addCss(SITE_TEMPLATE_PATH .'/css/style.css');
-Asset::getInstance()->addJs( SITE_TEMPLATE_PATH .'/js/bootstrap.min.js');
+Asset::getInstance()->addCss('/local/components/dev/SendForm/css/bootstrap.min.css');
+Asset::getInstance()->addCss('/local/components/dev/SendForm/css/style.css');
+Asset::getInstance()->addJs( '/local/components/dev/SendForm/js/bootstrap.min.js');
 ?>
 <section class="content">
     <div class="container-fluid">
