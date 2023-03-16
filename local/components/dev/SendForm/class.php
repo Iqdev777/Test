@@ -4,6 +4,7 @@ namespace Dev;
 
 use Bitrix\Main\Engine\ActionFilter\Authentication;
 use Bitrix\Main\Engine\Contract\Controllerable;
+
 use COption;
 
 class DevSendForm extends \CBitrixComponent implements Controllerable
@@ -16,6 +17,34 @@ class DevSendForm extends \CBitrixComponent implements Controllerable
         }
 
         $this->sendMail($arfileIds);
+    }
+
+    private function getTableData($data){
+        $table = '<table class="table">
+                   <thead>
+                    <tr>
+                        <th>Бренд</th>
+                        <th>Заголовок</th>
+                        <th>Количество</th>
+                        <th>Фасовна</th>
+                        <th>Клиент</th>
+                    </tr>
+                    </thead>
+                    <tbody>';
+
+        foreach ($data['request'] as $value) {
+            $table .="<tr>
+                <td>$value->brand</td>
+                <td>$value->title</td>
+                <td>$value->count</td>
+                <td>$value->packagings</td>
+                <td>$value->client</td>
+            </tr>";
+       }
+
+        $table .='</tbody> </table>';
+
+        return $table;
     }
 
     private function uploadFiles($arFiles)
@@ -34,12 +63,20 @@ class DevSendForm extends \CBitrixComponent implements Controllerable
 
         $this->request->set('request', json_decode($this->request->toArray()['request']));
 
-        \Bitrix\Main\Mail\Event::sendImmediate(array( // or send
+        $arData = $this->request->toArray();
+
+        \Bitrix\Main\Mail\Event::send(array(
             "EVENT_NAME" => "FORM_NEW",
             "LID" => "s1",
             "C_FIELDS" => array(
                 "EMAIL" => $email,
                 "EMAIL_TO" =>'arman9796@yandex.ru',
+                'TITLE' => $arData['titleRequest'],
+                'CATEGORY' => $arData['categoryRadio'],
+                'TYPE_REQUEST' => $arData['type_requestRadio'],
+                'STOCK' => $arData['stockSelect'],
+                'TABLE_DATA' => $this->getTableData($arData),
+                'COMMENT' => $arData['comment']
             ),
             "FILE" => $fileIds)
         );

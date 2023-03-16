@@ -1,5 +1,9 @@
 <?php if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 CJSCore::Init(array("fx"));
+use  \Bitrix\Main\Page\Asset;
+Asset::getInstance()->addCss(SITE_TEMPLATE_PATH .'/css/bootstrap.min.css');
+Asset::getInstance()->addCss(SITE_TEMPLATE_PATH .'/css/style.css');
+Asset::getInstance()->addJs( SITE_TEMPLATE_PATH .'/js/bootstrap.min.js');
 ?>
 <section class="content">
     <div class="container-fluid">
@@ -56,22 +60,22 @@ CJSCore::Init(array("fx"));
         <label class="form-label">Состав заявки</label>
         <div class="mb-3 multiple" id="multiple-fields">
             <div class="multiple-field">
-                <select class="form-select m-2" name="brand[]" style="width: unset" aria-label="Бренд">
+                <select class="form-select input-request" name="brand[]" style="width: unset" aria-label="Бренд">
                     <option selected>Выберите бренд</option>
                     <option value="Eufab">Eufab</option>
                     <option value="BMW">BMW</option>
                     <option value="Lorain">Lorain</option>
                 </select>
-                <input type="text" name="title[]" class="form-control m-2 " placeholder="Заголовок">
-                <input type="number" name="count[]" class="form-control m-2" placeholder="Количество">
-                <input type="text" name="packaging[]" class="form-control m-2" placeholder="Фасовка">
-                <input type="text" name="client[]" class="form-control m-2" placeholder="Клиент">
-                <button type="button"  class="btn btn-primary btn-xs form-button m-2 add">+</button>
-                <button type="button"  class="btn btn-danger btn-xs form-button m-2 delete">-</button>
+                <input type="text" name="title[]" class="form-control input-request" placeholder="Заголовок">
+                <input type="number" name="count[]" class="form-control input-request" placeholder="Количество">
+                <input type="text" name="packaging[]" class="form-control input-request" placeholder="Фасовка">
+                <input type="text" name="client[]" class="form-control input-request" placeholder="Клиент">
+                <button type="button"  class="btn btn-primary btn-xs form-button add input-request">+</button>
+                <button type="button"  class="btn btn-danger btn-xs form-button  delete input-request">-</button>
             </div>
         </div>
         <div class="mb-3 col-sm-6">
-            <input class="form-control" type="file" multiple name="files[]">
+            <input class="form-control " type="file" multiple name="files[]">
         </div>
 
         <label class="form-label">Комментарий</label>
@@ -80,7 +84,7 @@ CJSCore::Init(array("fx"));
         </div>
 
         <div class="mb-3">
-            <button type="button" class="btn btn-success form-button m-2 send">Отправить</button>
+            <button type="button" class="btn btn-success form-button input-request send">Отправить</button>
         </div>
     </div>
     </div>
